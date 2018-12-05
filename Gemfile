@@ -19,6 +19,9 @@ gem "paranoia", "~> 2.4"
 gem "sidekiq"
 gem "kaminari"
 gem "active_model_serializers"
+gem "rack-cors"
+gem "rack-attack"
+gem "swagger-docs"
 
 group :development, :test do
   gem "pry"
