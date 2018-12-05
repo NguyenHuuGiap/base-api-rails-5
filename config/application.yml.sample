@@ -1,0 +1,5 @@
+DATABASE_HOSTNAME: "localhost"
+DATABASE_NAME: "bap-travel-matching"
+DATABASE_USERNAME: "database_name"
+DATABASE_PASSWORD: "database_password"
+MYSQL_POOL: "20"

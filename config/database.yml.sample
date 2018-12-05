@@ -1,0 +1,27 @@
+# MySQL. Versions 5.0 and up are supported.
+#
+# Install the MySQL driver
+#   gem install mysql2
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("MYSQL_POOL") { 5 } %>
+  host: <%= ENV["DATABASE_HOSTNAME"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  port: <%= ENV.fetch("DATABASE_PORT") { 3306 } %>
+
+development:
+  <<: *default
+  database: travel_matching_development
+
+test:
+  <<: *default
+  database: travel_matching_test
+
+production:
+  <<: *default
+  database: travel_matching_production
+  username: travel_matching
+  password: <%= ENV['TRAVEL-MATCHING-DATABASE-PASSWORD'] %>
