@@ -12,16 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_12_04_042718) do
 
-  create_table "auth_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "token", null: false
-    t.datetime "expired_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_auth_tokens_on_user_id"
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
@@ -30,5 +21,14 @@ ActiveRecord::Schema.define(version: 2018_12_04_042718) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "auth_tokens", "users"
+  create_table "auth_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "account_id"
+    t.string "token", null: false
+    t.datetime "expired_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_auth_tokens_on_account_id"
+  end
+
+  add_foreign_key "auth_tokens", "accounts"
 end

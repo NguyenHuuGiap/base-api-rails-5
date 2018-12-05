@@ -1,14 +1,14 @@
 class AuthToken < ApplicationRecord
   include SecuredGenStrConcern
 
-  belongs_to :user
+  belongs_to :account
 
   validates :token, presence: true, length: {maximum: Settings.validations.strings.max_length}
   validates :expired_at, presence: true
 
   class << self
-    def generate! user, remember = false
-      token = find_or_initialize_by user: user
+    def generate! account, remember = false
+      token = find_or_initialize_by account: account
       token.renew! remember
     end
 
@@ -18,7 +18,8 @@ class AuthToken < ApplicationRecord
   end
 
   def renew! remember = false
-    update! token: unique_random(:token), expired_at: Settings.auth_tokens.public_send(remember ? :expires_in : :short_expires_in).seconds.from_now
+    update! token: unique_random(:token),
+      expired_at: Settings.auth_tokens.public_send(remember ? :expires_in : :short_expires_in).seconds.from_now
     self
   end
 

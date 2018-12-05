@@ -12,9 +12,6 @@ Rails:
 
 # Common configuration.
 AllCops:
-  # Include gemspec and Rakefile
-  Include:
-    - '**/*.gemspec'
   Exclude:
     - 'vendor/**/*'
     - 'config/unicorn.rb'
@@ -25,8 +22,13 @@ AllCops:
     - 'lib/tasks/**/*'
     - '**/Rakefile'
     - '**/Gemfile'
+    - '**/Capfile'
+    - '**/Guardfile'
+    - '**/config.ru'
+    - 'node_modules/**/*'
+    - 'spec/*'
 
-  TargetRubyVersion: 2.4.1
+  TargetRubyVersion: 2.5.1
   # By default, the rails cops are not run. Override in project or home
   # directory .rubocop.yml files, or by giving the -R/--rails option.
 
@@ -205,6 +207,13 @@ Layout/MultilineOperationIndentation:
 Metrics/CyclomaticComplexity:
   Max: 6
 
+# Multi-line method chaining should be done with leading dots.
+Layout/DotPosition:
+  EnforcedStyle: leading
+  SupportedStyles:
+    - leading
+    - trailing
+
 # Use empty lines between defs.
 Layout/EmptyLineBetweenDefs:
   # If true, this parameter means that single line method definitions don't
@@ -230,6 +239,7 @@ Naming/FileName:
   Exclude:
     - '**/Rakefile'
     - '**/Gemfile'
+    - '**/Capfile'
 
 # Checks use of for or each in multiline loops.
 Style/For:
@@ -240,7 +250,7 @@ Style/For:
 
 # Enforce the method used for string formatting.
 Style/FormatString:
-  EnforcedStyle: percent
+  EnforcedStyle: format
   SupportedStyles:
     - format
     - sprintf
@@ -260,6 +270,9 @@ Style/HashSyntax:
   SupportedStyles:
     - ruby19
     - hash_rockets
+
+Metrics/LineLength:
+  Max: 80
 
 # Checks the indentation of the first key in a hash literal.
 Layout/IndentHash:
@@ -286,7 +299,6 @@ Metrics/LineLength:
   AllowURI: true
   Exclude:
     - config/routes.rb
-    - spec/**/*
 
 
 Style/Next:
@@ -348,11 +360,7 @@ Style/PercentLiteralDelimiters:
 
 Naming/PredicateName:
   NamePrefixBlacklist:
-    - can_
     - get_
-    - has_
-    - have_
-    - is_
 
 Style/RaiseArgs:
   EnforcedStyle: exploded
@@ -411,8 +419,6 @@ Layout/SpaceBeforeBlockBraces:
   SupportedStyles:
     - space
     - no_space
-  Exclude:
-    - 'spec/factories/**/*'
 
 Layout/SpaceInsideBlockBraces:
   EnforcedStyle: no_space
@@ -495,22 +501,6 @@ Style/WordArray:
 Lint/AssignmentInCondition:
   AllowSafeAssignment: true
 
-# Align ends correctly.
-Lint/EndAlignment:
-  # The value `keyword` means that `end` should be aligned with the matching
-  # keyword (if, while, etc.).
-  # The value `variable` means that in assignments, `end` should be aligned
-  # with the start of the variable on the left hand side of `=`. In all other
-  # situations, `end` should still be aligned with the keyword.
-  EnforcedStyleAlignWith: keyword
-
-Lint/DefEndAlignment:
-  # The value `def` means that `end` should be aligned with the def keyword.
-  # The value `start_of_line` means that `end` should be aligned with method
-  # calls like `private`, `public`, etc, if present in front of the `def`
-  # keyword on the same line.
-  EnforcedStyleAlignWith: start_of_line
-
 ##################### Rails ##################################
 
 Rails/ActionFilter:
@@ -528,9 +518,6 @@ Rails/HasAndBelongsToMany:
 Rails/ReadWriteAttribute:
   Include:
     - app/models/**/*.rb
-
-Rails/SafeNavigation:
-  ConvertTry: true
 
 Rails/ScopeArgs:
   Include:

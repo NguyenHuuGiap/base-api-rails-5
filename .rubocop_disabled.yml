@@ -1,6 +1,7 @@
 # These are all the cops that are disabled in the default configuration.
-Style/AsciiComments:
-  Description: "Use only ascii symbols in comments."
+
+Style/StringLiterals:
+  Description: "Prefer double-quoted strings unless you need single quotes"
   Enabled: false
 
 Style/Lambda:
@@ -80,9 +81,6 @@ Style/RedundantParentheses:
 Style/EmptyCaseCondition:
   Enabled: false
 
-Style/RescueStandardError:
-  Enabled: false
-
 Style/EmptyMethod:
   Enabled: false
 
@@ -128,9 +126,6 @@ Layout/SpaceInLambdaLiteral:
 Layout/SpaceInsideBlockBraces:
   Enabled: false
 
-Layout/DotPosition:
-  Enabled: false
-
 Lint/UselessAccessModifier:
   Enabled: false
 
@@ -146,15 +141,6 @@ Style/Encoding:
 Rails/SkipsModelValidations:
   Enabled: false
 
-Rails/InverseOf:
-  Enabled: false
-
-Rails/HasManyOrHasOneDependent:
-  Enabled: false
-
-Rails/HasManyOrHasOneDependent:
-  Enabled: false
-
 Rails/Blank:
   Enabled: false
 
@@ -164,11 +150,22 @@ Rails/Delegate:
 Rails/OutputSafety:
   Enabled: false
 
-Rails/Presence:
+Rails/HasManyOrHasOneDependent:
   Enabled: false
 
+Rails/InverseOf:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/ModuleFunction:
+  Enabled: false
 #################### Lint ################################
 ### Warnings
 Lint/AssignmentInCondition:
   Description: "Don't use assignment in conditions."
+  Enabled: false
+
+Style/BlockComments:
   Enabled: false

@@ -1,6 +1,6 @@
 module Base
   extend ActiveSupport::Concern
-  include Helpers::HandleErrorHelper
+  include HandleError
 
   class_methods do
     def perform! *args, &block

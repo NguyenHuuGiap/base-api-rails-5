@@ -15,7 +15,7 @@ auth_tokens:
   expires_in: <%= 30.days %>
   short_expires_in: <%= 1.day %>
 
-users:
+accounts:
   reset_password_token:
     expires_in: <%= 1.hour %>
     length: 6
