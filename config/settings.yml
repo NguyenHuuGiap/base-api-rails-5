@@ -1,0 +1,23 @@
+access_token_header: "X-Auth-Token"
+access_token_value_prefix: "Bearer"
+
+validations:
+  email_regex: !ruby/regexp '/\A([a-zA-Z0-9][\w\.\+\-]*)@([\w.\-]+\.+[\w]{2,})\z/'
+  user_password_regex: !ruby/regexp '/^(?=.*\d).{8,}\z/'
+  user_reset_password_token_regex: !ruby/regexp '/^\d{6}\z/'
+  admin_reset_password_token_regex: !ruby/regexp '/^\w{24}\z/'
+  strings:
+    max_length: 255
+
+auth_tokens:
+  token:
+    secure_length: 64
+  expires_in: <%= 30.days %>
+  short_expires_in: <%= 1.day %>
+
+accounts:
+  reset_password_token:
+    expires_in: <%= 1.hour %>
+    length: 6
+  name:
+    max_length: 255
