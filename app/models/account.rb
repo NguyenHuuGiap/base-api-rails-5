@@ -10,7 +10,7 @@ class Account < ApplicationRecord
   has_one :auth_token
 
   enum staff_role: {owner: 0, store_manager: 1, staff: 2, cast: 3, driver: 4, clerical: 5,
-                    call_center: 6, admin: 7, cs: 8}
+                    call_center: 6, administrator: 7, cs: 8}
   enum account_div: {disable: 0, enable: 1, default: 2}
   enum account_lock: {block: 0, active: 1, normal: 2}
 end
