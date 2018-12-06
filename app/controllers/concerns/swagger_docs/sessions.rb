@@ -7,7 +7,7 @@ module SwaggerDocs::Sessions
     swagger_api :sign_in do
       summary "Account sign in"
       notes "Account sign in"
-      param :form, "email", :string, :required, "Email"
+      param :form, "account", :string, :required, "Account"
       param :form, "password", :string, :required, "Password"
       response :unauthorized
       response :not_acceptable

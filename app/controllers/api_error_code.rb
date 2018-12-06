@@ -2,7 +2,6 @@ module ApiErrorCode
   ERROR_CODES = {
     record_not_found: 404,
     record_invalid: 422,
-    invalid_email_password: 401,
     unauthenticated: 401,
     token_expired: 401,
     validation_errors: 422,
@@ -13,7 +12,6 @@ module ApiErrorCode
   RESPONSE_HEADER_CODES = {
     record_not_found: 404,
     record_invalid: 422,
-    invalid_email_password: 401,
     unauthenticated: 401,
     token_expired: 401,
     validation_errors: 422,

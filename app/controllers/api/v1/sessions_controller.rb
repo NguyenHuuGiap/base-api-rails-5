@@ -4,7 +4,7 @@ module Api::V1
     include SwaggerDocs::Sessions
 
     def sign_in
-      account = Account.find_by email: sign_in_params[:email]
+      account = Account.find_by account: sign_in_params[:account]
       return handle_error! :account_not_found unless account
       return login_failure unless account&.authenticate(sign_in_params[:password])
 
@@ -18,7 +18,7 @@ module Api::V1
 
     private
     def sign_in_params
-      params.permit :email, :password
+      params.permit :account, :password
     end
 
     def login_failure
