@@ -5,7 +5,7 @@ module Response
     def exception_format exception, code
       {
         error_code: code,
-        error_message: exception.message.to_s.split('::').last
+        error_message: exception.message.to_s.split("::").last
       }
     end
 

@@ -9,7 +9,7 @@ module Api::V1
 
     private
     def account_params
-      params.permit :name, :email, :password, :password_confirmation
+      params.permit :account, :password, :password_confirmation
     end
   end
 end
