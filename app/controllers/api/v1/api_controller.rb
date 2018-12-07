@@ -5,7 +5,7 @@ module Api::V1
 
     private
     def process_account_token_and_response auth_token
-      return handle_error! :auth_token_not_found unless auth_token
+      raise ApiError::AuthTokenNotFound unless auth_token
 
       account = auth_token.account
       json_response(:created, nil, token: auth_token.token, exp: auth_token.expired_at,
