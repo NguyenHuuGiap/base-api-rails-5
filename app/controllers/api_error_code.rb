@@ -7,6 +7,7 @@ module ApiErrorCode
     validation_errors: 422,
     auth_token_not_found: 405,
     sign_out_success: 201,
+    account_not_found: 406,
     fallback: 400
   }
   RESPONSE_HEADER_CODES = {
@@ -17,6 +18,7 @@ module ApiErrorCode
     validation_errors: 422,
     auth_token_not_found: 405,
     sign_out_success: 201,
+    account_not_found: 406,
     fallback: 400
   }
 end
