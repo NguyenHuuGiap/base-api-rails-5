@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       resources :accounts
       scope "account" do
         post "sign_in", to: "sessions#sign_in"
-        delete "sign_out", to: "sessions#sign_out"
+        post "sign_up", to: "sessions#sign_up"
+        post "verify_account", to: "sessions#verify_account"
+        post "forgot_password", to: "sessions#forgot_password"
+        post "password_reset", to: "sessions#password_reset"
       end
     end
   end

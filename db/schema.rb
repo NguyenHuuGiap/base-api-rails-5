@@ -13,18 +13,9 @@
 ActiveRecord::Schema.define(version: 2018_12_04_042718) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "account", null: false
+    t.string "email", null: false
     t.string "password_digest", null: false
-    t.string "before_password", null: false
-    t.string "init_password", null: false
-    t.integer "staff_role", default: 0, null: false
-    t.datetime "account_created"
-    t.datetime "account_stoped"
-    t.integer "account_div", default: 1
-    t.integer "log_miss_count", default: 0
-    t.integer "account_lock", default: 0
-    t.datetime "lockout_time"
-    t.datetime "unlocked_time"
+    t.string "state", default: "deactive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

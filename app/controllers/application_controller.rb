@@ -6,11 +6,7 @@ class ApplicationController < ActionController::API
   serialization_scope nil
 
   def authenticate_account!
-    handle_error! :unauthenticated unless current_account
-  end
-
-  def current_account
-    @current_account ||= auth_token&.account
+    handle_error! :unauthenticated unless current_account || current_account&.active?
   end
 
   def auth_token
@@ -23,5 +19,13 @@ class ApplicationController < ActionController::API
     return nil unless auth_header
 
     auth_header.scan(/^#{Settings.access_token_value_prefix} (.+)$/i).dig 0, 0
+  end
+
+  def current_account
+    @current_account ||= Account.find payload[0]["account_id"] if payload.present?
+  end
+
+  def payload
+    @payload ||= JsonWebToken.decode access_token_header if access_token_header
   end
 end

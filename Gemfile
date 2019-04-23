@@ -13,7 +13,6 @@ gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "figaro", "~> 1.1.1"
 gem "bcrypt", "~> 3.1.7"
-gem "devise"
 gem "config"
 gem "paranoia", "~> 2.4"
 gem "sidekiq"
@@ -22,7 +21,9 @@ gem "active_model_serializers"
 gem "rack-cors"
 gem "rack-attack"
 gem "swagger-docs"
-gem "carrierwave"
+gem "jwt"
+gem "ransack"
+
 
 group :development, :test do
   gem "pry"
