@@ -16,3 +16,6 @@ Swagger::Docs::Config.register_apis({
     clean_directory: true
   }
 })
+Sidekiq.configure_server do |config|
+  config.redis = { url: 'redis://172.18.0.2:6379' }
+end
