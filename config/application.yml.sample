@@ -3,3 +3,14 @@ DATABASE_NAME: "bap-travel-matching"
 DATABASE_USERNAME: "database_name"
 DATABASE_PASSWORD: "database_password"
 MYSQL_POOL: "20"
+
+#mailer
+SMTP_ADDRESS: "smtp.gmail.com"
+SMTP_PORT: "587"
+SMTP_AUTHENTICATION: "plain"
+SMTP_DOMAIN: "gmail.com"
+EMAIL_USERNAME: "email"
+EMAIL_PASSWORD: "password"
+HOST: "localhost:3000"
+
+SECRET_KEY_BASE: "e237ecaf9d21e7d8843c0eccea71398ed463963a56ed0e324abd8a43baaebe0710f5ac3d97e56f3"
