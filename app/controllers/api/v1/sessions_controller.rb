@@ -10,6 +10,8 @@ module Api::V1
       account = Account.find_by email: account_params[:email]
       raise ApiError::AccountNotFound unless account
 
+      raise ApiError::AccountDeactive unless account.active?
+
       raise ApiError::LoginWrong unless account&.authenticate(account_params[:password])
 
       process_account_token_and_response account
